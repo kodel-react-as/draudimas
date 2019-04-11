@@ -1,6 +1,7 @@
 package jp182.sergej.admin.controller;
 
 import jp182.sergej.admin.model.User;
+import jp182.sergej.admin.model.UserData;
 import jp182.sergej.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,14 @@ public class UserController {
     public ResponseEntity<?> getAllUsers() {
         List<User> userList = userService.getAllUsers();
         return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+    }
+
+    @PostMapping("/password")
+    public @ResponseBody ResponseEntity<?> changePassword(@RequestBody UserData data) {
+        User foundUser = userService.findByUsername(data.getUsername());
+        foundUser.setPassword(data.getPassword());
+        userService.saveUser(foundUser);
+        return new ResponseEntity<String>("Password changed.", HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -15,6 +15,7 @@ public class User {
     private Long id;
 
     @NotNull
+    @Column(unique=true)
     @Size(max = 20)
     private String username;
 
