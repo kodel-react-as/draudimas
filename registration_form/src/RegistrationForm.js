@@ -6,9 +6,7 @@ class RegistrationForm extends React.Component {
     render() {
         return(
             <div className="container">
-
-                <form className>
-
+                <form>
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group">
@@ -23,7 +21,6 @@ class RegistrationForm extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group">
@@ -38,7 +35,6 @@ class RegistrationForm extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group">
@@ -53,7 +49,6 @@ class RegistrationForm extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group">
@@ -62,7 +57,6 @@ class RegistrationForm extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group">
@@ -70,7 +64,6 @@ class RegistrationForm extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         )
