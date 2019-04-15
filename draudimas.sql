@@ -15,17 +15,19 @@ CREATE SCHEMA IF NOT EXISTS `draudimas` DEFAULT CHARACTER SET utf8 ;
 USE `draudimas` ;
 
 -- -----------------------------------------------------
--- Table `draudimas`.`customers`
+-- Table `draudimas`.`users`  pin - personal identification number
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `draudimas`.`customers` (
-  `customerId` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `draudimas`.`users` (
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
-  `personIdNumber` INT NOT NULL,
+  `pin` VARCHAR(45) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`customerId`))
+  PRIMARY KEY (`userId`))
 ENGINE = InnoDB;
 
 
@@ -45,15 +47,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `draudimas`.`policies` (
   `policiesId` INT NOT NULL AUTO_INCREMENT,
-  `customerId` INT NOT NULL,
+  `userId` INT NOT NULL,
   `typeId` INT NOT NULL,
   `startdate` DATE NOT NULL,
   `enddate` DATE NOT NULL,
   `other` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`policiesId`, `customerId`, `typeId`),
+  PRIMARY KEY (`policiesId`, `userId`, `typeId`),
   CONSTRAINT `fk_policies_customers`
-    FOREIGN KEY (`customerId`)
-    REFERENCES `draudimas`.`customers` (`customerId`)
+    FOREIGN KEY (`userId`)
+    REFERENCES `draudimas`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_policies_policyType1`
@@ -69,13 +71,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `draudimas`.`question` (
   `questionId` INT NOT NULL,
-  `customerId` INT NOT NULL,
+  `userId` INT NOT NULL,
   `questionText` VARCHAR(45) NOT NULL,
   `questionDate` DATE NOT NULL,
-  PRIMARY KEY (`questionId`, `customerId`),
+  PRIMARY KEY (`questionId`, `userId`),
   CONSTRAINT `fk_question_customers1`
-    FOREIGN KEY (`customerId`)
-    REFERENCES `draudimas`.`customers` (`customerId`)
+    FOREIGN KEY (`userId`)
+    REFERENCES `draudimas`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -96,31 +98,15 @@ CREATE TABLE IF NOT EXISTS `draudimas`.`claims` (
   PRIMARY KEY (`claimId`, `policiesId`, `customerId`, `typeId`),
   CONSTRAINT `fk_claims_policies1`
     FOREIGN KEY (`policiesId` , `customerId` , `typeId`)
-    REFERENCES `draudimas`.`policies` (`policiesId` , `customerId` , `typeId`)
+    REFERENCES `draudimas`.`policies` (`policiesId` , `userId` , `typeId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `draudimas`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `draudimas`.`users` (
-  `userid` INT NOT NULL,
-  `customerId` INT NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(60) NOT NULL,
-  PRIMARY KEY (`userid`, `customerId`),
-  CONSTRAINT `fk_users_customers1`
-    FOREIGN KEY (`customerId`)
-    REFERENCES `draudimas`.`customers` (`customerId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-INSERT INTO USERS(userid,customerid,username,password)
-VALUES (1,1,'vartotojas','$2a$10$..UgxP7qpvJ640nL4a9zxOHNTuENIOGVgVSe5P8.5XOoPtkZ2kLB6');
+INSERT INTO USERS(userid,username,password,FirstName,LastName,pin,country,city,address)
+VALUES (1,'vartotojas','$2a$10$..UgxP7qpvJ640nL4a9zxOHNTuENIOGVgVSe5P8.5XOoPtkZ2kLB6','Vardenis','Pavardenis','39001020123','Lithuania','Vilnius','Totoriu12'),
+		(2,'useris','123456','Petras','Petrauskas','39002030234','Lithuania','Kaunas','Nemuno15');
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
