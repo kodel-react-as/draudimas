@@ -1,0 +1,29 @@
+#formQuestion {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#fillForm {
+    border: 5px double black;
+    padding: 25px;
+}
+
+#fillForm p {
+    text-align: right;
+}
+
+#fillForm select {
+    width: 100%;
+}
+
+#fillForm #confirmForm p{
+    text-align: center;
+}
+
+#fillForm #radioPick {
+    margin-right: 10px;
+}
+
+#fillForm #submitForm {
+    text-align: right;
+}
