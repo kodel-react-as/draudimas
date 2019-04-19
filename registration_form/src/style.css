@@ -1,0 +1,16 @@
+form {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+form h1 {
+    text-align: center;
+}
+
+.button {
+    text-align: center;
+}
+
+input[type="submit"] {
+    width: 60%;
+}

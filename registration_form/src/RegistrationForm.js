@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import './style.css'
 
 class RegistrationForm extends React.Component {
 
@@ -59,16 +60,17 @@ class RegistrationForm extends React.Component {
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
+                <h1>Registracija</h1>
 
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>Firstname:</label>
+                                <label>Vardas:</label>
 
                                 <input 
                                     type="text" 
                                     className="form-control"
-                                    placeholder="Your first name"
+                                    placeholder="Jūsų vardas"
                                     onChange={this.handleFirstNameChange}
                                     value={this.state.firstName}
                                     required 
@@ -81,12 +83,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                                 <div className="form-group">
-                                    <label>Lastname:</label>
+                                    <label>Pavardė:</label>
 
                                     <input
                                         type="text" 
                                         className="form-control" 
-                                        placeholder="Your last name" 
+                                        placeholder="Jūsų pavardė" 
                                         onChange={this.handleLastNameChange}
                                         value={this.state.lastName}
                                         required
@@ -99,12 +101,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>ID number:</label>
+                                <label>Asmens kodas:</label>
 
                                 <input 
                                     type="text" 
                                     className="form-control" 
-                                    placeholder="Your ID number" 
+                                    placeholder="Jūsų asmens kodas" 
                                     pattern="^[0-9]*$"
                                     onChange={this.handleIdNumberChange}
                                     value={this.state.idNumber}
@@ -118,12 +120,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>Country</label>
+                                <label>Valstybė</label>
 
                                 <input
                                     type="text" 
                                     className="form-control"
-                                    placeholder="Your country"
+                                    placeholder="Jūsų valstybė"
                                     onChange={this.handleCountryChange}
                                     value={this.state.country}
                                     required
@@ -137,12 +139,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>City</label>
+                                <label>Miestas</label>
 
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="Your city"
+                                    placeholder="Jūsų miestas"
                                     onChange={this.handleCityChange}
                                     value={this.state.city}
                                     required
@@ -154,12 +156,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>Adress</label>
+                                <label>Adresas</label>
 
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="Your adress"
+                                    placeholder="Jūsų adresas"
                                     onChange={this.handleAdressChange}
                                     value={this.state.value}
                                     required
@@ -172,12 +174,12 @@ class RegistrationForm extends React.Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <label>Password:</label>
+                                <label>Slaptažodis</label>
 
                                 <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Your password"
+                                placeholder="Jūsų slaptažodis"
                                 onChange={this.handlePasswordChange}
                                 value={this.state.password}
                                 required
@@ -189,9 +191,9 @@ class RegistrationForm extends React.Component {
 
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="form-group">
+                            <div className="form-group button">
 
-                                <input type="submit" className="btn btn-primary" />
+                                <input type="submit" className="btn btn-primary" value="Patvirtinti" />
                                 
                             </div>
                         </div>
