@@ -1,59 +1,52 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css'
+import axios from 'axios';
 
 class RegistrationForm extends React.Component {
 
-    state = {
-        firstName: '',
-        lastName: '', 
-        idNumber: '',
-        country: '',
-        city: '',
-        adress: '',
-        password: ''
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstName: '',
+            lastName: '', 
+            idNumber: '',
+            country: '',
+            city: '',
+            adress: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
-    handleFirstNameChange = event => {
-        this.setState({firstName: event.target.value});
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
-    handleLastNameChange = event => {
-        this.setState({lastName: event.target.value});
-    }
-
-    handleIdNumberChange = event => {
-        this.setState({idNumber: event.target.value});
-    }
-
-    handleCountryChange = event => {
-        this.setState({country: event.target.value});
-    }
-
-    handleCityChange = event => {
-        this.setState({city: event.target.value});
-    }
-
-    handleAdressChange = event => {
-        this.setState({adress: event.target.value});
-    }
-
-    handlePasswordChange = event => {
-        this.setState({password: event.target.value});
-    }
-
-    handleSubmit = event => {
+    handleSubmit(event) {
         event.preventDefault();
 
-        const firstName = this.state.firstName;
-        const lastName = this.state.lastName;
-        const idNumber = this.state.idNumber;
-        const country = this.state.country;
-        const city = this.state.city;
-        const adress = this.state.adress;
-        const password = this.state.password;
+        const customer = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            idNumber: this.state.idNumber,
+            country: this.state.country,
+            city: this.state.city,
+            adress: this.state.adress,
+            password: this.state.password
+        };
 
-        console.log(firstName + " " + lastName + " " + idNumber + " " + country + " " + city + " " + adress + " " + password);
+        const postUrl = "http://demo0725191.mockable.io/post_data";
+
+        axios.post(postUrl, {customer}).then(
+            response => {console.log(response);}
+        )
+        
+        console.log(customer);
     }
 
     render() {
@@ -71,7 +64,10 @@ class RegistrationForm extends React.Component {
                                     type="text" 
                                     className="form-control"
                                     placeholder="Jūsų vardas"
-                                    onChange={this.handleFirstNameChange}
+                                    name="firstName"
+                                    pattern="^[A-Za-z]*$"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
                                     value={this.state.firstName}
                                     required 
                                 />
@@ -82,19 +78,22 @@ class RegistrationForm extends React.Component {
 
                     <div className="row">
                         <div className="col-lg-12">
-                                <div className="form-group">
-                                    <label>Pavardė:</label>
+                            <div className="form-group">
+                                <label>Pavardė:</label>
 
-                                    <input
-                                        type="text" 
-                                        className="form-control" 
-                                        placeholder="Jūsų pavardė" 
-                                        onChange={this.handleLastNameChange}
-                                        value={this.state.lastName}
-                                        required
-                                    />
+                                <input
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Jūsų pavardė"
+                                    name="lastName" 
+                                    pattern="^[A-Za-z]*$"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
+                                    value={this.state.lastName}
+                                    required
+                                />
 
-                                </div>
+                            </div>
                         </div>
                     </div>
                         
@@ -107,8 +106,10 @@ class RegistrationForm extends React.Component {
                                     type="text" 
                                     className="form-control" 
                                     placeholder="Jūsų asmens kodas" 
+                                    name="idNumber"
                                     pattern="^[0-9]*$"
-                                    onChange={this.handleIdNumberChange}
+                                    maxLength="11"
+                                    onChange={this.handleChange}
                                     value={this.state.idNumber}
                                     required
                                 />
@@ -126,7 +127,10 @@ class RegistrationForm extends React.Component {
                                     type="text" 
                                     className="form-control"
                                     placeholder="Jūsų valstybė"
-                                    onChange={this.handleCountryChange}
+                                    name="country"
+                                    pattern="^[A-Za-z]*$"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
                                     value={this.state.country}
                                     required
                                 />
@@ -145,7 +149,10 @@ class RegistrationForm extends React.Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="Jūsų miestas"
-                                    onChange={this.handleCityChange}
+                                    name="city"
+                                    pattern="^[A-Za-z]*$"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
                                     value={this.state.city}
                                     required
                                 />
@@ -162,8 +169,10 @@ class RegistrationForm extends React.Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="Jūsų adresas"
-                                    onChange={this.handleAdressChange}
-                                    value={this.state.value}
+                                    name="adress"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
+                                    value={this.state.adress}
                                     required
                                 />
 
@@ -177,12 +186,14 @@ class RegistrationForm extends React.Component {
                                 <label>Slaptažodis</label>
 
                                 <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Jūsų slaptažodis"
-                                onChange={this.handlePasswordChange}
-                                value={this.state.password}
-                                required
+                                    type="password"
+                                    className="form-control"
+                                    placeholder="Jūsų slaptažodis"
+                                    name="password"
+                                    maxLength="45"
+                                    onChange={this.handleChange}
+                                    value={this.state.password}
+                                    required
                                 />
 
                             </div>
