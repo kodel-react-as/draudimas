@@ -18,9 +18,10 @@ USE `draudimas` ;
 -- Table `draudimas`.`users`  pin - personal identification number
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `draudimas`.`users` (
-  `userId` INT NOT NULL AUTO_INCREMENT,
+  `userId` BIGINT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(60) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
   `pin` VARCHAR(45) NOT NULL,
