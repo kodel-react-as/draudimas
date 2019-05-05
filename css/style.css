@@ -1,16 +1,36 @@
-/*Navigation*/
-.navigation-items{
-    list-style-type: none;
-    border-left:1px solid;
-    z-index:0;
-} 
-nav ul{
-    border-right:1px solid;
+/*whole width*/
+.container-fluid {
+  padding-right:0;
+  padding-left:0;
+  margin-right:auto;
+  margin-left:auto
 }
+/*Navigation*/
 .logo{
     max-width:80px;
     max-height:50px;
 }
+a {
+  color: #252525;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.navbar-nav a {
+  font-size: 16px;
+  font-weight: 200px;
+  color: #fff;
+  letter-spacing: -0.5px;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+.nav-item .active > a{
+  color: #11d491;
+}
+.nav-item:hover {
+  color: #11d491;
+}
+
 .nav-search-button:hover {
     color: #252525;
     border-color: #252525;
@@ -19,12 +39,6 @@ nav ul{
   }
   .nav-hover:hover{
       color:white;
-  }
-  ul li a{
-    color: #5cb85c;
-  }
-  ul li a:hover{
-    color: #fff;
   }
 /* ------------------ */
 /*Carousel*/
@@ -52,6 +66,7 @@ nav ul{
 /*Main*/
 #us {
     background-color: #f6f6f6;
+    padding:0.3em;
   }
   .btn:hover{
     background: #fff;
@@ -64,5 +79,7 @@ nav ul{
 /*Footer*/
 .footer{
     color:grey;
+    padding-top:0.5em;
+    padding-bottom:1em;
 }
 /*---------------------*/
