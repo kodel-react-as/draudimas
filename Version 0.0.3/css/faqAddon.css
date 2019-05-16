@@ -1,0 +1,62 @@
+/*Table style settings*/
+
+table,
+th,
+td {
+    border: 5px solid black;
+    border-style: double;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: lightslategrey;
+    color: white;
+    text-decoration: underline;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+tbody tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+tbody th {
+    text-align: center;
+}
+
+table td {
+    width: 100%;
+}
+
+/*FAQ settings*/
+#questionSelector {
+    margin-top: 15px;
+}
+
+#askedQuestions li a {
+    font-size: 110%;
+    border: 2px solid lightgrey;
+    background-color: darkslategrey;
+    
+    padding: 10px;
+}
+
+#faq-text-field {
+    padding: 25px;
+    min-height: 500px;
+    min-width: 100%;
+    border: 2px solid lightgrey;
+    background-color: #b8b894;
+}
+
+#faq-text-field p {
+    border-bottom: 2px solid lightgrey;
+    padding-bottom: 10px;
+}
